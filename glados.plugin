@@ -1,0 +1,11 @@
+#!name=GLaDOS 自动签到 (2026-10 修复版)
+#!desc=支持 glados.cloud / 新版 Cookie / 设备自适应
+#!author=ilemon666
+#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GLaDOS.png
+
+[Script]
+http-request ^https:\/\/(?:glados\.(?:cloud|network|rocks|one|space|vip)|railgun\.info|glados-facility\.com)\/console\/account$ script-path=https://raw.githubusercontent.com/ilemon666/GLaDOS-Railgun-CheckIn-Script/main/GLaDOS_Railgun_Checkin.js, requires-body=false, timeout=30, tag=GLaDOS获取Cookie
+cron "10 7 * * *" script-path=https://raw.githubusercontent.com/ilemon666/GLaDOS-Railgun-CheckIn-Script/main/GLaDOS_Railgun_Checkin.js, timeout=60, tag=GLaDOS签到, enable=true
+
+[MITM]
+hostname = glados.cloud, railgun.info, glados.network, glados.rocks, glados.one, glados.space, glados.vip, glados-facility.com
